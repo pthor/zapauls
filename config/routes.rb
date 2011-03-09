@@ -16,6 +16,8 @@ Zapauls::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
      resources :search
+     
+     root :to => 'search#index'
 
   # Sample resource route with options:
   #   resources :products do
