@@ -44,8 +44,6 @@ h3 {
 }
 
 p, ul, ol {
-	margin-top: 1.5em;
-	line-height: 160%;
 }
 
 ul, ol {
@@ -302,7 +300,6 @@ hr {
 #recent-posts h3 {
 	margin: 20px 0 0 0;
 	padding: 0;
-	font-size: 1.4em;
 }
 
 #recent-posts h3 a {
@@ -458,3 +455,5 @@ p span.buynow{
 #facebook_comments{
  margin:40px;
 }
+
+#pageination{ font-weight: bold; font-size: 18pt; text-align:right;}

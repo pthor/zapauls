@@ -2,9 +2,9 @@
 <ul id="searchResults">
 <% @results['results'].each_with_index do |product, index| %>
   <li <%= "class='first'" if (index % 3) == 0 %> >
-    <h3><%= link_to"#{product['brandName']} #{product['productName']}",product['productUrl'] %></h3>
+    <h3><%= link_to"#{product['brandName']} #{product['productName']}", "/products/#{product['productId']}" %></h3>
     <p>
-      <%= link_to( image_tag( product['thumbnailImageUrl'], :align=>'left'), product['productUrl']) %><br>
+      <%= link_to( image_tag( product['thumbnailImageUrl'], :align=>'left'), "/products/#{product['productId']}") %><br>
       <%= product['price'] %> 
       <%- if product['price'] != product['originalPrice'] %>
       <span class='discount'>(<%= "#{product['percentOff']} off #{product['originalPrice']}" %>)</span>
@@ -15,4 +15,9 @@
   </li>
 <% end %>
 <ul>
+  
+  <p id="pageination" style="clear:both">
+  <%= link_to( "back", :controller => 'search', :action => 'index', :page => @results['currentPage'].to_i + 1 ) if @results['currentPage'].to_i > 1 %>
+  <%= link_to( "more", :controller => 'search', :action => 'index', :page => @results['currentPage'].to_i + 1 ) if @results['currentPage'].to_i < @results['pageCount'].to_i %>
+  </p>
 

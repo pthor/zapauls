@@ -60,14 +60,12 @@
 			</div>
 		</li>
 		<li id="categories-1">
-			<h2>Categories</h2>
-			<ul>
-				<li><a href="#" title="View all posts filed under Uncategorized">Uncategorized</a> (3) </li>
-				<li><a href="#" title="View all posts filed under Lorem Ipsum">Lorem Ipsum</a> (42) </li>
-				<li><a href="#" title="View all posts filed under Urna Congue Rutrum">Urna Congue Rutrum</a> (28) </li>
-				<li><a href="#" title="View all posts filed under Augue Praesent">Augue Praesent</a> (55) </li>
-				<li><a href="#" title="View all posts filed under Vivamus Fermentum">Vivamus Fermentum</a> (13) </li>
-			</ul>
+			<h2>Core Values</h2>
+			<ol>
+			  <% @core_values['values'].each do |value| %>
+				<li><%= value['name'] %></li>
+				<% end %>
+			</ol>
 		</li>
 	</ul>
 	<div style="clear: both; height: 40px;"></div>
