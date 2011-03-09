@@ -11,7 +11,9 @@ class Zappos
     get("/Search?term=#{term}")
   end
  
-  def self.get_stores_by_zip(zip)
-    get("/v1/stores(postalCode=#{zip})")
+  def self.product(sku)
+    puts sku.kind_of? Array
+    sku = sku.join(',') if sku.kind_of? Array
+    get("/Product/#{sku}")
   end
 end

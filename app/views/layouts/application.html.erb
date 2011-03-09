@@ -7,7 +7,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-    <% form_tag('/search', :method => 'get') do %>
+    <%= form_tag('/search', :method => 'get') do %>
       <%= text_field_tag :search, params[:search], :id => 'search_field' %>
        <%= submit_tag "Search", :name => nil %> 
     <% end %> 
