@@ -1,14 +1,18 @@
 <h2><%= params[:search] %> products</h2>
-<ul>
+<ul id="searchResults">
 <% @results['results'].each_with_index do |product, index| %>
-<li <%= "class='first'" if (index % 3) == 0 %> >
-  <h3><%= link_to"#{product['brandName']} #{product['productName']}",product['productUrl'] %></h3>
-  <p>
-    <%= link_to( image_tag( product['thumbnailImageUrl']), product['productUrl']) %><br>
-    <%= product['price'] %> <%=   "#{product['percentOff']} of #{product['originalPrice']} "if product['price'] != product['originalPrice'] %>
-  </p>
+  <li <%= "class='first'" if (index % 3) == 0 %> >
+    <h3><%= link_to"#{product['brandName']} #{product['productName']}",product['productUrl'] %></h3>
+    <p>
+      <%= link_to( image_tag( product['thumbnailImageUrl'], :align=>'left'), product['productUrl']) %><br>
+      <%= product['price'] %> 
+      <%- if product['price'] != product['originalPrice'] %>
+      <span class='discount'>(<%= "#{product['percentOff']} off #{product['originalPrice']}" %>)</span>
+      <%- end %>
+    </p>
     <iframe src="http://www.facebook.com/plugins/like.php?href=<%= u product['productUrl']%>&amp;layout=box_count&amp;show_faces=true&amp;width=450&amp;action=recommend&amp;font&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:65px;" allowTransparency="true"></iframe>
-</li>
+    
+  </li>
 <% end %>
 <ul>
 

@@ -12,8 +12,19 @@ class Zappos
   end
  
   def self.product(sku)
-    puts sku.kind_of? Array
     sku = sku.join(',') if sku.kind_of? Array
-    get("/Product/#{sku}")
+    uri = '/Product/' + sku.to_s + "?includes=#{include_uri_string()}"
+    puts uri
+    get(uri)
+  end
+  
+  private 
+  
+  def self.extra_product_include
+    ["description","styles"]
+  end
+  
+  def self.include_uri_string
+   URI.encode '["' + extra_product_include.join('","') + '"]'
   end
 end

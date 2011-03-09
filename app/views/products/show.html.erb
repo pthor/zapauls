@@ -1,0 +1,25 @@
+   <% if  @product.parsed_response["statusCode"] != "200" %>
+<h2>Oh Shucks!</h2>
+<h3>I wasn't able to find that product =(</h3>
+<% else %>
+  <% @product['product'].each do |product|  %>
+    <h2><%= link_to"#{product['brandName']} #{product['productName']}",product['defaultProductUrl'] %></h2>
+    <ul>
+      <li class="first">
+      <%= link_to( image_tag( product['defaultImageUrl']), product['defaultProductUrl']) %>
+      <%= product['styles'].first['price'] %> 
+      <%- if product['styles'].first['price'] != product['styles'].first['originalPrice'] %>
+      <span class='discount'>(<%= "#{product['styles'].first['percentOff']} off #{product['styles'].first['originalPrice']}" %>)</span>
+      <%- end %>
+      <span class="buynow"><%=link_to 'Buy Now', product['defaultProductUrl'] %></span>
+        </li>
+      </ul>
+      
+    <%= product['description'].html_safe %>
+    <div id="facebook_comments">
+      <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=183766954998681&amp;xfbml=1"></script><fb:comments href="<%= product['defaultProductUrl']%>" num_posts="4" width="700"></fb:comments>
+    </div>
+  <% end %>
+
+    
+<% end %>

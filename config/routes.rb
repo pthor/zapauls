@@ -1,4 +1,6 @@
 Zapauls::Application.routes.draw do
+  get "products/show"
+
   get "search/index"
 
   get "search/show"
@@ -16,6 +18,8 @@ Zapauls::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
      resources :search
+     resources :products
+     
      
      root :to => 'search#index'
 

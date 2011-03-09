@@ -349,7 +349,7 @@ hr {
 
 #recent-posts p {
 	padding: 0;
-	margin: 0;
+	margin: 20px;
 }
 
 
@@ -439,4 +439,22 @@ hr {
 
 .post #search_field{
   width:400px;
+}
+
+#searchResults .discount{
+  color:red;
+  font-size: 10px;
+}
+
+p span.buynow{
+  font-weight:bold;
+  font-size:14px;
+}
+
+#productContainer{
+  position:relative;
+}
+
+#facebook_comments{
+ margin:40px;
 }
