@@ -17,7 +17,7 @@
 <ul>
   
   <p id="pageination" style="clear:both">
-  <%= link_to( "back", :controller => 'search', :action => 'index', :page => @results['currentPage'].to_i + 1 ) if @results['currentPage'].to_i > 1 %>
+  <%= link_to( "back", :controller => 'search', :action => 'index', :page => @results['currentPage'].to_i - 1 ) if @results['currentPage'].to_i > 1 %>
   <%= link_to( "more", :controller => 'search', :action => 'index', :page => @results['currentPage'].to_i + 1 ) if @results['currentPage'].to_i < @results['pageCount'].to_i %>
   </p>
 
