@@ -1,19 +1,82 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Zapauls</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Zappos Recommendations</title>
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tag %>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
 </head>
 <body>
-    <%= form_tag('/search', :method => 'get') do %>
+<div id="header">
+<div id="logo">
+	<h1><a href="#">zappauls</a></h1>
+	<h2>social recommendation engine</h2>
+</div>
+</div>
+<div id="menu-wrap">
+</div>
+<hr />
+<div id="latest-post-wrap">
+<div id="latest-post" class="post">
+	<p class="byline"><span>Quickly find the products that people like,  get recommendations, and recommend products to your friends</span></p>
+	<div class="entry">
+	  <%= form_tag('/search', :method => 'get') do %>
+		<h1> 
       <%= text_field_tag :search, params[:search], :id => 'search_field' %>
-       <%= submit_tag "Search", :name => nil %> 
-    <% end %> 
+      <%= submit_tag "Search", :name => nil %> </h1>
+		
+		<% end %>
+	</div>
+</div>
+</div>
+<div id="content">
+
+<div id="recent-posts">
+    <%= yield %>
 
 
-<%= yield %>
-
+	<div style="clear: both; height: 40px;">&nbsp;</div>
+</div>
+<div id="sidebar">
+	<ul>
+		<li id="search">
+			<h2>Search</h2>
+			<%= form_tag('/search', :method => 'get') do %>
+			<div>
+        <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+        <br />
+        <%= submit_tag "Search", :name => nil %> 
+      </div>
+      <% end %>
+		</li>
+		<li id="calendar">
+			<h2>Recomendations</h2>
+			<div id="calendar_wrap">
+<iframe src="http://www.facebook.com/plugins/recommendations.php?site=zappos.com&amp;width=257&amp;height=300&amp;header=false&amp;colorscheme=light&amp;font=arial&amp;border_color" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:257px; height:300px;" allowTransparency="true"></iframe>
+			</div>
+		</li>
+		<li id="categories-1">
+			<h2>Categories</h2>
+			<ul>
+				<li><a href="#" title="View all posts filed under Uncategorized">Uncategorized</a> (3) </li>
+				<li><a href="#" title="View all posts filed under Lorem Ipsum">Lorem Ipsum</a> (42) </li>
+				<li><a href="#" title="View all posts filed under Urna Congue Rutrum">Urna Congue Rutrum</a> (28) </li>
+				<li><a href="#" title="View all posts filed under Augue Praesent">Augue Praesent</a> (55) </li>
+				<li><a href="#" title="View all posts filed under Vivamus Fermentum">Vivamus Fermentum</a> (13) </li>
+			</ul>
+		</li>
+	</ul>
+	<div style="clear: both; height: 40px;"></div>
+</div>
+</div>
+<hr />
+<div id="footer">
+	<p class="legal">&copy;2011 All Rights Reserved.</p>
+	</div>
 </body>
 </html>
+

@@ -24,8 +24,13 @@ class ZapposTest < ActiveSupport::TestCase
   test "no products returned if no sku given" do
     response = Zappos.product('')
     puts response.inspect
-    assert response.parsed_response["statusCode"] == "200"
-    assert response['product'].size == 0
+    assert response.parsed_response["statusCode"] == "400"
   end
+  
+  test "search for boots returns results" do 
+    response = Zappos.search("boots")
+    assert response.parsed_response["statusCode"] == "200"
+    assert response['results'].size > 2
+  end 
   
 end

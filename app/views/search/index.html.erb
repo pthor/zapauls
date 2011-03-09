@@ -1,18 +1,14 @@
-<h1>Search for <%= params[:search] %></h1>
-
-<% @results['results'].each do |product| %>
-<div>
-  <%
-  #{"price"=>"$163.95", "percentOff"=>"0%", "productId"=>"7431066", "styleId"=>"1211285", "thumbnailImageUrl"=>"http://www.zappos.com/images/z/1/2/1/1211285-t-THUMBNAIL.jpg", "productUrl"=>"http://www.zappos.com/product/7431066/color/247794", "originalPrice"=>"$163.95", "productName"=>"Chopper (115cm)", "colorId"=>"247794", "brandName"=>"Burton Kids"}
-  %>
-  <h2><%= "#{product['brandName']} #{product['productName']}" %></h2>
+<h2><%= params[:search] %> products</h2>
+<ul>
+<% @results['results'].each_with_index do |product, index| %>
+<li <%= "class='first'" if (index % 3) == 0 %> >
+  <h3><%= link_to"#{product['brandName']} #{product['productName']}",product['productUrl'] %></h3>
   <p>
-    <%= link_to( image_tag( product['thumbnailImageUrl']), product['productUrl']) %>
-    <%= link_to "Buy at Zappos", product['productUrl'] %>
+    <%= link_to( image_tag( product['thumbnailImageUrl']), product['productUrl']) %><br>
     <%= product['price'] %> <%=   "#{product['percentOff']} of #{product['originalPrice']} "if product['price'] != product['originalPrice'] %>
-    <iframe src="http://www.facebook.com/plugins/like.php?href=<%=product['productUrl']%>&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=recommend&amp;font=arial&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
   </p>
-
-</div>
+    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= u product['productUrl']%>&amp;layout=box_count&amp;show_faces=true&amp;width=450&amp;action=recommend&amp;font&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:65px;" allowTransparency="true"></iframe>
+</li>
 <% end %>
+<ul>
 
